@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinop BİLSEM Deniz Bilimleri</title>
+    <style>
+        /* --- GENEL AYARLAR --- */
+        :root {
+            --koyu-mavi: #0a192f;
+            --okyanus-mavisi: #112240;
+            --turkuaz: #64ffda;
+            --beyaz: #e6f1ff;
+            --gri: #8892b0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--koyu-mavi);
+            color: var(--beyaz);
+            line-height: 1.6;
+        }
+
+        /* --- BAŞLIK ALANI (HEADER) --- */
+        header {
+            background: linear-gradient(90deg, #020c1b 0%, #112240 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--turkuaz);
+            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--turkuaz);
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: var(--gri);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* --- ANA TASARIM (GRID SİSTEMİ) --- */
+        .container {
+            display: grid;
+            grid-template-columns: 3fr 1fr; /* Sol taraf geniş, sağ taraf butonlar */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* --- SOL TARA: İÇERİK --- */
+        .main-content {
+            background-color: var(--okyanus-mavisi);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.7);
+            border: 1px solid #233554;
+        }
+
+        .haber-basligi {
+            color: var(--turkuaz);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--turkuaz);
+            padding-left: 15px;
+        }
+
+        .resim-cercevesi {
+            width: 100%;
+            height: 400px;
+            background-color: #020c1b;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            position: relative;
+            border: 2px solid var(--turkuaz);
+        }
+
+        .resim-cercevesi img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .resim-cercevesi:hover img {
+            transform: scale(1.05);
+        }
+
+        .etiket {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .metin {
+            font-size: 1.1rem;
+            color: var(--beyaz);
+        }
+
+        /* --- SAĞ TARAF: BUTONLAR --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .ozel-buton {
+            display: block;
+            background: linear-gradient(135deg, #112240 0%, #233554 100%);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--turkuaz);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            border: 1px solid var(--turkuaz);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ozel-buton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--turkuaz);
+            transition: width 0.3s ease;
+        }
+
+        .ozel-buton:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -15px rgba(100, 255, 218, 0.2);
+            color: #020c1b;
+        }
+
+        .ozel-buton:hover::before {
+            width: 100%;
+            z-index: -1;
+        }
+
+        .buton-alt-metin {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--gri);
+            margin-top: 5px;
+            font-weight: normal;
+            transition: color 0.3s;
+        }
+
+        .ozel-buton:hover .buton-alt-metin {
+            color: #0a192f;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: var(--gri);
+            font-size: 0.9rem;
+            border-top: 1px solid #233554;
+        }
+
+        /* --- MOBİL UYUMLULUK --- */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .resim-cercevesi {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sinop BİLSEM<br>Deniz Bilimleri Atölyesi Grubu</h1>
+        <p>Bilim ve Sanatın Derinliklerindeki Keşif</p>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <h2 class="haber-basligi">Milli Gururumuz: Su Altı Gözlem Aracı (ROV)</h2>
+            
+            <div class="resim-cercevesi">
+                <span class="etiket">Sinop Bilsem Ekibi!</span>
+                <img src="https://www.habername.com/d/news/248478.jpg" alt="Sinop Bilsem Su Altı Aracı">
+            </div>
+
+            <div class="metin">
+                <p>Sinop Bilim ve Sanat Merkezi (BİLSEM) öğrencileri ve danışman öğretmenleri tarafından geliştirilen yerli Su Altı Gözlem Aracı, Karadeniz'in zorlu koşullarında test edildi ve tam not aldı.</p>
+                
+                <p>Yüksek çözünürlüklü kameraları, robotik kol sistemleri ve basınç sensörleri ile donatılan bu araç, su altı kirliliğini tespit etmek ve deniz canlılarını doğal ortamlarında gözlemlemek için tasarlandı. Projemiz, <strong>TRT Haber</strong> başta olmak üzere birçok ulusal medya organında geniş yer buldu.</p>
+                
+                <p>Geleceğin mühendislerini yetiştiren atölyemiz, deniz teknolojileri alanında ülkemizi temsil etmeye devam edecek.</p>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <a href="https://sinopbilsem.meb.k12.tr/" target="_blank" class="ozel-buton">
+                SİNOP BİLSEM
+                <span class="buton-alt-metin">Resmi Web Sitesi</span>
+            </a>
+
+            <a href="https://meb.gov.tr" target="_blank" class="ozel-buton">
+                MEB
+                <span class="buton-alt-metin">Milli Eğitim Bakanlığı</span>
+            </a>
+
+            <a href="basin.html" target="_blank" class="ozel-buton">
+                BASINDA BİZ
+                <span class="buton-alt-metin">Haberler ve Duyurular</span>
+            </a>
+
+            <a href="projeler.html" class="ozel-buton">
+                PROJELERİMİZ
+                <span class="buton-alt-metin">Tüm Çalışmalar</span>
+            </a>
+
+            <a href="iletisim.html" class="ozel-buton">
+                İLETİŞİM
+                <span class="buton-alt-metin">İletişim Bilgileri</span>
+            </a>
+        </aside>
+    </div>
+
+    <footer>
+        &copy; 2024 Sinop BİLSEM Deniz Bilimleri Atölyesi. Tüm Hakları Saklıdır.
+    </footer>
+
+</body>
+</html>
